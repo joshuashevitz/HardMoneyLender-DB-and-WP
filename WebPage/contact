@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="UTF-8">
+<title>Contact Us</title>
+<link rel="stylesheet" href="css2/style2.css" type="text/css">
+</head> 
+<body>
+	<header>
+	<nav>
+		<ul>
+			<li><a href="file:///C:/Users/joshs/OneDrive/Desktop/attempt2/index.html">Back to Home Page</a></li>
+			<li><a href="">About Us</a></li>
+			<li><a href="file:///C:/Users/joshs/OneDrive/Desktop/attempt2/appform.html">Apply</a></li>
+		</ul>
+	</nav>
+</header>
+<section class = "home-hero"> 
+<h1>contact page</h1>
+			<form action="/action_page.php" class="appsec"> 
+		<div class = "container">
+			<table>
+			
+				<tr>
+					<td>First Name:</td>
+					<td><input type = "text" name=""></td>
+					<td>Middle Initial:</td>
+					<td><input type="text" name=""></td>
+					<td>Last Name:</td>
+					<td><input type = "text" name = ""></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type ="text" email=""></td>
+					<td>Password:</td>
+					<td><input type="text" name=""></td>
+				</tr>
+			</table>
+			</div>
+		</form>
+</section>
+	</body> 
+</html>
