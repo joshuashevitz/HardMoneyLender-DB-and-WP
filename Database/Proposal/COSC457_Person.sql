@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `COSC457` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `COSC457`;
 -- MySQL dump 10.13  Distrib 5.7.29-ndb-7.6.13, for Linux (x86_64)
 --
 -- Host: localhost    Database: COSC457
@@ -16,27 +18,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Experience`
+-- Table structure for table `Person`
 --
 
-DROP TABLE IF EXISTS `Experience`;
+DROP TABLE IF EXISTS `Person`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Experience` (
-  `possesserSsn` int(9) NOT NULL,
-  `contractorLicenseNumber` int(11) DEFAULT NULL,
-  PRIMARY KEY (`possesserSsn`),
-  CONSTRAINT `Whose_Experience` FOREIGN KEY (`possesserSsn`) REFERENCES `Applicant` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `Person` (
+  `ssn` int(9) NOT NULL,
+  `proofOfCitizenship` blob,
+  `email` varchar(45) NOT NULL,
+  `fName` varchar(20) NOT NULL,
+  `lName` varchar(20) NOT NULL,
+  `sex` char(1) NOT NULL,
+  `dateOfBirth` date NOT NULL,
+  PRIMARY KEY (`ssn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Experience`
+-- Dumping data for table `Person`
 --
 
-LOCK TABLES `Experience` WRITE;
-/*!40000 ALTER TABLE `Experience` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Experience` ENABLE KEYS */;
+LOCK TABLES `Person` WRITE;
+/*!40000 ALTER TABLE `Person` DISABLE KEYS */;
+INSERT INTO `Person` VALUES (111223333,NULL,'mcapa@hotmail.com','Marcy','Caparucinni','F','1988-01-07'),(123456789,NULL,'jdoe@gmail.com','John','Doe','M','1981-10-31');
+/*!40000 ALTER TABLE `Person` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 20:49:26
+-- Dump completed on 2020-04-20 21:10:04

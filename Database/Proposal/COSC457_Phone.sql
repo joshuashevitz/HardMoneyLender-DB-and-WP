@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `COSC457` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `COSC457`;
 -- MySQL dump 10.13  Distrib 5.7.29-ndb-7.6.13, for Linux (x86_64)
 --
 -- Host: localhost    Database: COSC457
@@ -16,29 +18,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Employee`
+-- Table structure for table `Phone`
 --
 
-DROP TABLE IF EXISTS `Employee`;
+DROP TABLE IF EXISTS `Phone`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Employee` (
+CREATE TABLE `Phone` (
   `ssn` int(9) NOT NULL,
-  `position` varchar(45) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`ssn`),
-  CONSTRAINT `Is_Person_Employee` FOREIGN KEY (`ssn`) REFERENCES `Person` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `number` bigint(10) NOT NULL,
+  `type` char(4) NOT NULL,
+  PRIMARY KEY (`number`,`ssn`),
+  KEY `whosePhone_idx` (`ssn`),
+  CONSTRAINT `Whose_Phone` FOREIGN KEY (`ssn`) REFERENCES `Person` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Employee`
+-- Dumping data for table `Phone`
 --
 
-LOCK TABLES `Employee` WRITE;
-/*!40000 ALTER TABLE `Employee` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Employee` ENABLE KEYS */;
+LOCK TABLES `Phone` WRITE;
+/*!40000 ALTER TABLE `Phone` DISABLE KEYS */;
+INSERT INTO `Phone` VALUES (111223333,3219870099,'Cell'),(111223333,7191238877,'Home');
+/*!40000 ALTER TABLE `Phone` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 20:49:26
+-- Dump completed on 2020-04-20 21:10:05

@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `COSC457` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `COSC457`;
 -- MySQL dump 10.13  Distrib 5.7.29-ndb-7.6.13, for Linux (x86_64)
 --
 -- Host: localhost    Database: COSC457
@@ -16,31 +18,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `View`
+-- Table structure for table `Degree`
 --
 
-DROP TABLE IF EXISTS `View`;
+DROP TABLE IF EXISTS `Degree`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `View` (
-  `employeeSsn` int(9) NOT NULL,
-  `applicantSsn` int(9) NOT NULL,
-  PRIMARY KEY (`employeeSsn`,`applicantSsn`),
-  KEY `View_Property_idx` (`applicantSsn`),
-  CONSTRAINT `View_Experience` FOREIGN KEY (`applicantSsn`) REFERENCES `Experience` (`possesserSsn`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `View_Finances` FOREIGN KEY (`applicantSsn`) REFERENCES `Finances` (`maintainersSsn`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `View_Property` FOREIGN KEY (`applicantSsn`) REFERENCES `Property` (`ownerSsn`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Who_Views` FOREIGN KEY (`employeeSsn`) REFERENCES `Employee` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `Degree` (
+  `ssn` int(9) NOT NULL,
+  `study` varchar(45) NOT NULL,
+  `level` varchar(10) NOT NULL,
+  PRIMARY KEY (`ssn`,`study`),
+  CONSTRAINT `Whose_Degree` FOREIGN KEY (`ssn`) REFERENCES `Person` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `View`
+-- Dumping data for table `Degree`
 --
 
-LOCK TABLES `View` WRITE;
-/*!40000 ALTER TABLE `View` DISABLE KEYS */;
-/*!40000 ALTER TABLE `View` ENABLE KEYS */;
+LOCK TABLES `Degree` WRITE;
+/*!40000 ALTER TABLE `Degree` DISABLE KEYS */;
+INSERT INTO `Degree` VALUES (123456789,'Business Administration','PhD');
+/*!40000 ALTER TABLE `Degree` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 20:49:27
+-- Dump completed on 2020-04-20 21:10:04

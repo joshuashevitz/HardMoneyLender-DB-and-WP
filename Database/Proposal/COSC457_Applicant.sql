@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `COSC457` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `COSC457`;
 -- MySQL dump 10.13  Distrib 5.7.29-ndb-7.6.13, for Linux (x86_64)
 --
 -- Host: localhost    Database: COSC457
@@ -16,33 +18,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Finances`
+-- Table structure for table `Applicant`
 --
 
-DROP TABLE IF EXISTS `Finances`;
+DROP TABLE IF EXISTS `Applicant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Finances` (
-  `maintainersSsn` int(9) NOT NULL,
-  `w2Info` blob NOT NULL,
-  `jobTitle` varchar(45) NOT NULL,
-  `hasBeenBankrupt` char(1) NOT NULL,
-  `involvedInLawsuit` char(1) NOT NULL,
-  `creditScore` int(4) NOT NULL,
-  `income` int(10) NOT NULL,
-  `assets` int(10) NOT NULL,
-  PRIMARY KEY (`maintainersSsn`),
-  CONSTRAINT `Whose_Finances` FOREIGN KEY (`maintainersSsn`) REFERENCES `Applicant` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `Applicant` (
+  `ssn` int(9) NOT NULL,
+  `liabilityInsuranceProvider` varchar(45) DEFAULT NULL,
+  `titleProvider` varchar(45) DEFAULT NULL,
+  `applicantId` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ssn`),
+  UNIQUE KEY `applicantId_UNIQUE` (`applicantId`),
+  CONSTRAINT `Is_Person_Applicant` FOREIGN KEY (`ssn`) REFERENCES `Person` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Finances`
+-- Dumping data for table `Applicant`
 --
 
-LOCK TABLES `Finances` WRITE;
-/*!40000 ALTER TABLE `Finances` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Finances` ENABLE KEYS */;
+LOCK TABLES `Applicant` WRITE;
+/*!40000 ALTER TABLE `Applicant` DISABLE KEYS */;
+INSERT INTO `Applicant` VALUES (123456789,NULL,NULL,00001);
+/*!40000 ALTER TABLE `Applicant` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19 20:49:27
+-- Dump completed on 2020-04-20 21:10:05
