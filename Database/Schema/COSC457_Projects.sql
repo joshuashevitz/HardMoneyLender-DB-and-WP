@@ -18,28 +18,32 @@ USE `COSC457`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Experience`
+-- Table structure for table `Projects`
 --
 
-DROP TABLE IF EXISTS `Experience`;
+DROP TABLE IF EXISTS `Projects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Experience` (
+CREATE TABLE `Projects` (
   `applicantId` int(5) unsigned zerofill NOT NULL,
-  `contractorLicenseNumber` bigint(11) DEFAULT NULL,
+  `status` varchar(10) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `street` varchar(45) NOT NULL,
+  `zipCode` int(5) NOT NULL,
   PRIMARY KEY (`applicantId`),
-  CONSTRAINT `Whose_Experience` FOREIGN KEY (`applicantId`) REFERENCES `Applicant` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `To_Which_Experience` FOREIGN KEY (`applicantId`) REFERENCES `Experience` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Experience`
+-- Dumping data for table `Projects`
 --
 
-LOCK TABLES `Experience` WRITE;
-/*!40000 ALTER TABLE `Experience` DISABLE KEYS */;
-INSERT INTO `Experience` VALUES (00001,NULL);
-/*!40000 ALTER TABLE `Experience` ENABLE KEYS */;
+LOCK TABLES `Projects` WRITE;
+/*!40000 ALTER TABLE `Projects` DISABLE KEYS */;
+INSERT INTO `Projects` VALUES (00001,'Completed','CO','Colorado Springs','4914 Bittercreek Drive',80922);
+/*!40000 ALTER TABLE `Projects` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 21:10:05
+-- Dump completed on 2020-04-29  0:21:26

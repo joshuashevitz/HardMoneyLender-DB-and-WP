@@ -18,36 +18,34 @@ USE `COSC457`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Property`
+-- Table structure for table `Finances`
 --
 
-DROP TABLE IF EXISTS `Property`;
+DROP TABLE IF EXISTS `Finances`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Property` (
+CREATE TABLE `Finances` (
   `applicantId` int(5) unsigned zerofill NOT NULL,
-  `aquisitionDate` date NOT NULL,
-  `exitStrategy` varchar(45) NOT NULL,
-  `renovationStage` varchar(45) NOT NULL,
-  `state` varchar(45) NOT NULL,
-  `city` varchar(45) NOT NULL,
-  `street` varchar(45) NOT NULL,
-  `zipCode` int(5) NOT NULL,
-  `currentValue` int(10) NOT NULL,
-  `futureValue` int(10) NOT NULL,
-  PRIMARY KEY (`applicantId`,`aquisitionDate`),
-  CONSTRAINT `Whose_Property` FOREIGN KEY (`applicantId`) REFERENCES `Applicant` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `jobTitle` varchar(45) NOT NULL,
+  `w2Info` blob,
+  `hasBeenBankrupt` char(1) NOT NULL,
+  `involvedInLawsuit` char(1) NOT NULL,
+  `creditScore` int(4) NOT NULL,
+  `income` int(10) NOT NULL,
+  `assets` int(10) NOT NULL,
+  PRIMARY KEY (`applicantId`),
+  CONSTRAINT `Whose_Finances` FOREIGN KEY (`applicantId`) REFERENCES `Applicant` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Property`
+-- Dumping data for table `Finances`
 --
 
-LOCK TABLES `Property` WRITE;
-/*!40000 ALTER TABLE `Property` DISABLE KEYS */;
-INSERT INTO `Property` VALUES (00001,'2020-03-23','Sell','Destruction','MD','Baltimore','President Street',21252,10000,30000);
-/*!40000 ALTER TABLE `Property` ENABLE KEYS */;
+LOCK TABLES `Finances` WRITE;
+/*!40000 ALTER TABLE `Finances` DISABLE KEYS */;
+INSERT INTO `Finances` VALUES (00001,'Business Administration Professor',NULL,'F','T',840,45000,210340);
+/*!40000 ALTER TABLE `Finances` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -59,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 21:10:05
+-- Dump completed on 2020-04-29  0:21:26

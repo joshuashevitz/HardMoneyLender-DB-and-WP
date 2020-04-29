@@ -18,30 +18,36 @@ USE `COSC457`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Employee`
+-- Table structure for table `Property`
 --
 
-DROP TABLE IF EXISTS `Employee`;
+DROP TABLE IF EXISTS `Property`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Employee` (
-  `ssn` int(9) NOT NULL,
-  `position` varchar(45) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`ssn`),
-  CONSTRAINT `Is_Person_Employee` FOREIGN KEY (`ssn`) REFERENCES `Person` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `Property` (
+  `applicantId` int(5) unsigned zerofill NOT NULL,
+  `aquisitionDate` date NOT NULL,
+  `exitStrategy` varchar(45) NOT NULL,
+  `renovationStage` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `street` varchar(45) NOT NULL,
+  `zipCode` int(5) NOT NULL,
+  `currentValue` int(10) NOT NULL,
+  `futureValue` int(10) NOT NULL,
+  PRIMARY KEY (`applicantId`,`aquisitionDate`),
+  CONSTRAINT `Whose_Property` FOREIGN KEY (`applicantId`) REFERENCES `Applicant` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Employee`
+-- Dumping data for table `Property`
 --
 
-LOCK TABLES `Employee` WRITE;
-/*!40000 ALTER TABLE `Employee` DISABLE KEYS */;
-INSERT INTO `Employee` VALUES (111223333,'Under Writer','bigM2TheC','password123');
-/*!40000 ALTER TABLE `Employee` ENABLE KEYS */;
+LOCK TABLES `Property` WRITE;
+/*!40000 ALTER TABLE `Property` DISABLE KEYS */;
+INSERT INTO `Property` VALUES (00001,'2020-03-23','Sell','Destruction','MD','Baltimore','President Street',21252,10000,30000);
+/*!40000 ALTER TABLE `Property` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 21:10:05
+-- Dump completed on 2020-04-29  0:21:26

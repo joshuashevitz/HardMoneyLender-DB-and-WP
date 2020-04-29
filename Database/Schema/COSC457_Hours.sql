@@ -18,34 +18,29 @@ USE `COSC457`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Finances`
+-- Table structure for table `Hours`
 --
 
-DROP TABLE IF EXISTS `Finances`;
+DROP TABLE IF EXISTS `Hours`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Finances` (
-  `applicantId` int(5) unsigned zerofill NOT NULL,
-  `jobTitle` varchar(45) NOT NULL,
-  `w2Info` blob,
-  `hasBeenBankrupt` char(1) NOT NULL,
-  `involvedInLawsuit` char(1) NOT NULL,
-  `creditScore` int(4) NOT NULL,
-  `income` int(10) NOT NULL,
-  `assets` int(10) NOT NULL,
-  PRIMARY KEY (`applicantId`),
-  CONSTRAINT `Whose_Finances` FOREIGN KEY (`applicantId`) REFERENCES `Applicant` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `Hours` (
+  `ssn` int(9) NOT NULL,
+  `date` date NOT NULL,
+  `hours` int(2) NOT NULL,
+  PRIMARY KEY (`ssn`,`date`),
+  CONSTRAINT `Whose_Hours` FOREIGN KEY (`ssn`) REFERENCES `Employee` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Finances`
+-- Dumping data for table `Hours`
 --
 
-LOCK TABLES `Finances` WRITE;
-/*!40000 ALTER TABLE `Finances` DISABLE KEYS */;
-INSERT INTO `Finances` VALUES (00001,'Business Administration Professor',NULL,'F','T',840,45000,210340);
-/*!40000 ALTER TABLE `Finances` ENABLE KEYS */;
+LOCK TABLES `Hours` WRITE;
+/*!40000 ALTER TABLE `Hours` DISABLE KEYS */;
+INSERT INTO `Hours` VALUES (111223333,'2020-04-27',8),(111223333,'2020-04-28',6);
+/*!40000 ALTER TABLE `Hours` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 21:10:05
+-- Dump completed on 2020-04-29  0:21:25

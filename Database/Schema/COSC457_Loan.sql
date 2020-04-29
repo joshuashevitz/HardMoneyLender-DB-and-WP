@@ -33,12 +33,13 @@ CREATE TABLE `Loan` (
   `purchasePrice` int(10) NOT NULL,
   `timeTable` blob,
   `constructionBudget` blob,
+  `status` varchar(10) NOT NULL,
   PRIMARY KEY (`loanId`,`applicantId`),
   KEY `Who_Applied_idx` (`applicantId`),
   KEY `Who_Reviewed_idx` (`reviewerSsn`),
   CONSTRAINT `Who_Applied` FOREIGN KEY (`applicantId`) REFERENCES `Applicant` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Who_Reviewed` FOREIGN KEY (`reviewerSsn`) REFERENCES `Employee` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +48,7 @@ CREATE TABLE `Loan` (
 
 LOCK TABLES `Loan` WRITE;
 /*!40000 ALTER TABLE `Loan` DISABLE KEYS */;
-INSERT INTO `Loan` VALUES (0000000001,00001,111223333,80,20,5000,NULL,NULL);
+INSERT INTO `Loan` VALUES (0000000001,00001,111223333,80,20,5000,NULL,NULL,'Rejected'),(0000000002,00001,111223333,75,25,7000,NULL,NULL,'Accepted');
 /*!40000 ALTER TABLE `Loan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 21:10:04
+-- Dump completed on 2020-04-29  0:21:25

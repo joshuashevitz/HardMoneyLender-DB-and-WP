@@ -18,29 +18,28 @@ USE `COSC457`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Degree`
+-- Table structure for table `Experience`
 --
 
-DROP TABLE IF EXISTS `Degree`;
+DROP TABLE IF EXISTS `Experience`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Degree` (
-  `ssn` int(9) NOT NULL,
-  `study` varchar(45) NOT NULL,
-  `level` varchar(10) NOT NULL,
-  PRIMARY KEY (`ssn`,`study`),
-  CONSTRAINT `Whose_Degree` FOREIGN KEY (`ssn`) REFERENCES `Person` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `Experience` (
+  `applicantId` int(5) unsigned zerofill NOT NULL,
+  `contractorLicenseNumber` bigint(11) DEFAULT NULL,
+  PRIMARY KEY (`applicantId`),
+  CONSTRAINT `Whose_Experience` FOREIGN KEY (`applicantId`) REFERENCES `Applicant` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Degree`
+-- Dumping data for table `Experience`
 --
 
-LOCK TABLES `Degree` WRITE;
-/*!40000 ALTER TABLE `Degree` DISABLE KEYS */;
-INSERT INTO `Degree` VALUES (123456789,'Business Administration','PhD');
-/*!40000 ALTER TABLE `Degree` ENABLE KEYS */;
+LOCK TABLES `Experience` WRITE;
+/*!40000 ALTER TABLE `Experience` DISABLE KEYS */;
+INSERT INTO `Experience` VALUES (00001,NULL);
+/*!40000 ALTER TABLE `Experience` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 21:10:04
+-- Dump completed on 2020-04-29  0:21:25

@@ -18,30 +18,30 @@ USE `COSC457`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Phone`
+-- Table structure for table `Employee`
 --
 
-DROP TABLE IF EXISTS `Phone`;
+DROP TABLE IF EXISTS `Employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Phone` (
+CREATE TABLE `Employee` (
   `ssn` int(9) NOT NULL,
-  `number` bigint(10) NOT NULL,
-  `type` char(4) NOT NULL,
-  PRIMARY KEY (`number`,`ssn`),
-  KEY `whosePhone_idx` (`ssn`),
-  CONSTRAINT `Whose_Phone` FOREIGN KEY (`ssn`) REFERENCES `Person` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `position` varchar(45) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`ssn`),
+  CONSTRAINT `Is_Person_Employee` FOREIGN KEY (`ssn`) REFERENCES `Person` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Phone`
+-- Dumping data for table `Employee`
 --
 
-LOCK TABLES `Phone` WRITE;
-/*!40000 ALTER TABLE `Phone` DISABLE KEYS */;
-INSERT INTO `Phone` VALUES (111223333,3219870099,'Cell'),(111223333,7191238877,'Home');
-/*!40000 ALTER TABLE `Phone` ENABLE KEYS */;
+LOCK TABLES `Employee` WRITE;
+/*!40000 ALTER TABLE `Employee` DISABLE KEYS */;
+INSERT INTO `Employee` VALUES (111223333,'Under Writer','bigM2TheC','password123');
+/*!40000 ALTER TABLE `Employee` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 21:10:05
+-- Dump completed on 2020-04-29  0:21:26

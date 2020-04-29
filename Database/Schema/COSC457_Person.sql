@@ -18,32 +18,32 @@ USE `COSC457`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `View`
+-- Table structure for table `Person`
 --
 
-DROP TABLE IF EXISTS `View`;
+DROP TABLE IF EXISTS `Person`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `View` (
-  `employeeSsn` int(9) NOT NULL,
-  `applicantId` int(5) unsigned zerofill NOT NULL,
-  PRIMARY KEY (`employeeSsn`,`applicantId`),
-  KEY `View_Experience_idx` (`applicantId`),
-  CONSTRAINT `View_Experience` FOREIGN KEY (`applicantId`) REFERENCES `Experience` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `View_Finances` FOREIGN KEY (`applicantId`) REFERENCES `Finances` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `View_Property` FOREIGN KEY (`applicantId`) REFERENCES `Property` (`applicantId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Who_Viewed` FOREIGN KEY (`employeeSsn`) REFERENCES `Employee` (`ssn`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `Person` (
+  `ssn` int(9) NOT NULL,
+  `proofOfCitizenship` blob,
+  `email` varchar(45) NOT NULL,
+  `fName` varchar(20) NOT NULL,
+  `lName` varchar(20) NOT NULL,
+  `sex` char(1) NOT NULL,
+  `dateOfBirth` date NOT NULL,
+  PRIMARY KEY (`ssn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `View`
+-- Dumping data for table `Person`
 --
 
-LOCK TABLES `View` WRITE;
-/*!40000 ALTER TABLE `View` DISABLE KEYS */;
-INSERT INTO `View` VALUES (111223333,00001);
-/*!40000 ALTER TABLE `View` ENABLE KEYS */;
+LOCK TABLES `Person` WRITE;
+/*!40000 ALTER TABLE `Person` DISABLE KEYS */;
+INSERT INTO `Person` VALUES (111223333,NULL,'mcapa@hotmail.com','Marcy','Caparucinni','F','1988-01-07'),(123456789,NULL,'jdoe@gmail.com','John','Doe','M','1981-10-31');
+/*!40000 ALTER TABLE `Person` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-20 21:10:06
+-- Dump completed on 2020-04-29  0:21:25
